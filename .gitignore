@@ -1,0 +1,24 @@
+# --- Directories ---
+.vscode/          # VS Code workspace settings
+node_modules/     # Node.js dependencies
+dist/             # Built/compiled files (e.g., from TypeScript)
+build/            # Build output (e.g., React, Next.js)
+.cache/           # Cache folders (e.g., Parcel, Gatsby)
+
+# --- Files ---
+.env              # Environment variables (sensitive!)
+.env.local        # Local overrides
+.env*.local       # Other environment files
+.DS_Store         # macOS junk file
+*.log             # Log files
+*.tmp             # Temporary files
+
+# --- Dependency files ---
+package-lock.json # (Only if using Yarn)
+yarn.lock         # (Only if using npm)
+pnpm-lock.yaml    # (Only if using pnpm)
+
+# --- OS/Editor ---
+.idea/            # JetBrains IDE (WebStorm, IntelliJ)
+*.swp             # Vim swap files
+node_modules
