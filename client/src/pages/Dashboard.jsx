@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import {
   Overview,
   Tasks,
@@ -9,6 +11,18 @@ import {
 } from "../components/functional"; // ← make sure you import it
 
 export default function Dashboard({ activeTab, setActiveTab }) {
+  const tabComponents = useMemo(
+    () => ({
+      0: <Overview />,
+      1: <Clients />,
+      2: <Projects />,
+      3: <Tasks />,
+      4: <Users />,
+      5: <Pages />,
+    }),
+    []
+  );
+
   const tabs = [
     { id: 0, label: "Overview", component: <Overview /> },
     { id: 1, label: "Clients", component: <Clients /> },
@@ -20,7 +34,7 @@ export default function Dashboard({ activeTab, setActiveTab }) {
 
   return (
     <>
-      <div class="dashboard-header justify-content-center ms-5 ps-2 p-1 mb-5">
+      <div className="dashboard-header justify-content-center ms-5 ps-2 p-1 mb-5">
         <h2>Welcome to the Dashboard</h2>
       </div>
 
@@ -41,8 +55,19 @@ export default function Dashboard({ activeTab, setActiveTab }) {
             ))}
           </div>
 
-          {/* Tab Content */}
-          <div className="tab-content">{tabs[activeTab].component}</div>
+          {/* Tab Content with Transition Wrapper */}
+          <div className="tab-transition-container">
+            {Object.entries(tabComponents).map(([id, component]) => (
+              <div
+                key={id}
+                className={`tab-pane ${
+                  activeTab === Number(id) ? "active" : ""
+                }`}
+              >
+                {component}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>

@@ -659,3 +659,50 @@
   max-height: 90vh;
   overflow-y: auto;
 }
+
+
+/* Dashboard Layout */
+.dashboard-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Tab Transition System */
+.tab-transition-container {
+  position: relative;
+  min-height: 60vh; /* Prevents height jumps */
+}
+
+.tab-pane {
+  transition: 
+    opacity 300ms ease-out,
+    transform 300ms ease-out;
+  width: 100%;
+}
+
+.tab-pane:not(.active) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(20px);
+}
+
+.tab-pane.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Card Consistency */
+.card-tech {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body-tech {
+  flex: 1;
+  overflow-y: auto; /* Scroll if content overflows */
+}
