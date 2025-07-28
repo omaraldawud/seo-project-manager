@@ -8,6 +8,8 @@ import taskRoutes from "./routes/taskRoutes.js";
 import clientRoutes from "./routes/clientRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import pageRoutes from "./routes/pageRoutes.js";
+import activityRoutes from "./routes/activityRoutes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,6 +26,8 @@ app.use("/api/tasks", taskRoutes);
 app.use("/api/clients", clientRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/pages", pageRoutes);
+app.use("/api/activity", activityRoutes);
 
 //default route
 app.get("/", (req, res) => {

@@ -1,4 +1,5 @@
 import Client from "../models/Client.js";
+import { logActivity } from "../utils/logActivity.js";
 
 // Get all clients
 export const getClients = async (req, res) => {
@@ -15,6 +16,12 @@ export const createClient = async (req, res) => {
   try {
     const newClient = new Client(req.body);
     await newClient.save();
+    // ✅ Log activity
+    await logActivity({
+      text: `New client "${client.name}" added.`,
+      entityType: "client",
+      entityId: client._id,
+    });
     res.status(201).json(newClient);
   } catch (err) {
     res.status(500).json({ message: "Failed to create client" });
