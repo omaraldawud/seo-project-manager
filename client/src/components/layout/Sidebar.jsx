@@ -32,8 +32,9 @@ export default function Sidebar({ activeTab, setActiveTab }) {
     { icon: faUserFriends, title: "Clients" },
     { icon: faDiagramProject, title: "Projects" },
     { icon: faListCheck, title: "Tasks" },
-    { icon: faUser, title: "Users" },
     { icon: faPager, title: "Pages" },
+    { icon: faUser, title: "Users" },
+    // future dev
     { icon: faFileAlt, title: "Content Optimizer" },
     { icon: faUserShield, title: "Competitors" },
     { icon: faFileExport, title: "Exports / Reports" },

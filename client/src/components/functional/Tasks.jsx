@@ -91,7 +91,7 @@ export default function Tasks() {
       )}
 
       <div className="card-tech" style={{ gridColumn: "1 / -1" }}>
-        <div class="d-flex p-2">
+        <div className="d-flex p-2">
           <div>
             <h3 className="p-4 text text-white">SEO Tasks</h3>
           </div>
@@ -207,6 +207,7 @@ export default function Tasks() {
                 <thead className="table-light">
                   <tr>
                     <th style={{ minWidth: "200px" }}>Title</th>
+                    <th>Project</th>
                     <th>Category</th>
                     <th>Priority</th>
                     <th>Status</th>
@@ -226,7 +227,9 @@ export default function Tasks() {
                         />
                         {task.title}
                       </td>
+                      <td>{task.projectId?.name || "N/A"}</td>
                       <td className="text-capitalize">{task.category}</td>
+
                       <td>
                         <span
                           className={`badge text-uppercase ${

@@ -28,8 +28,8 @@ export default function Dashboard({ activeTab, setActiveTab }) {
     { id: 1, label: "Clients", component: <Clients /> },
     { id: 2, label: "Projects", component: <Projects /> },
     { id: 3, label: "Tasks", component: <Tasks /> },
-    { id: 4, label: "Users", component: <Users /> },
-    { id: 5, label: "Pages", component: <Pages /> },
+    { id: 4, label: "Pages", component: <Pages /> },
+    { id: 5, label: "Users", component: <Users /> },
   ];
 
   return (

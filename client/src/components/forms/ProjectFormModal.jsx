@@ -11,7 +11,7 @@ export default function ProjectFormModal({
   clients,
 }) {
   const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState();
   const [clientId, setClientId] = useState("");
   const [startDate, setStartDate] = useState("");
   const [dueDate, setDueDate] = useState("");
@@ -21,7 +21,7 @@ export default function ProjectFormModal({
     if (project) {
       setName(project.name || "");
       setDescription(project.description || "");
-      setClientId(project.clientId || "");
+      setClientId(project.clientId?._id || project.clientId || "");
       setStartDate(project.startDate?.substring(0, 10) || "");
       setDueDate(project.dueDate?.substring(0, 10) || "");
       setStatus(project.status || "Planned");
@@ -77,14 +77,15 @@ export default function ProjectFormModal({
           <div className="mb-3">
             <label className="form-label">Client</label>
             <select
+              required
               className="form-select"
               value={clientId}
               onChange={(e) => setClientId(e.target.value)}
             >
               <option value="">-- Select Client --</option>
-              {clients.map((client) => (
-                <option key={client._id} value={client._id}>
-                  {client.name}
+              {clients.map((c) => (
+                <option key={c._id} value={c._id}>
+                  {c.name}
                 </option>
               ))}
             </select>

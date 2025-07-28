@@ -12,9 +12,15 @@ export default function TaskFormModal({ onClose, onSuccess, task }) {
   const [tagsInput, setTagsInput] = useState("");
   const [startDate, setStartDate] = useState("");
   const [dueDate, setDueDate] = useState("");
+  const [projectId, setProjectId] = useState(task?.projectId?._id || "");
+  const [projects, setProjects] = useState([]);
 
   // Populate form if editing
   useEffect(() => {
+    // Fetch all projects
+    axios
+      .get("http://localhost:5000/api/projects")
+      .then((res) => setProjects(res.data));
     if (task) {
       setTitle(task.title || "");
       setDescription(task.description || "");
@@ -31,6 +37,7 @@ export default function TaskFormModal({ onClose, onSuccess, task }) {
       setDueDate(
         task.dueDate ? new Date(task.dueDate).toISOString().split("T")[0] : ""
       );
+      setProjectId(task.projectId?._id || task.projectId || "");
     }
   }, [task]);
 
@@ -39,6 +46,9 @@ export default function TaskFormModal({ onClose, onSuccess, task }) {
 
     if (!title.trim()) {
       return toast.error("Title is required");
+    }
+    if (!projectId) {
+      return toast.error("Project is required");
     }
     const payload = {
       title: title.trim(),
@@ -53,6 +63,7 @@ export default function TaskFormModal({ onClose, onSuccess, task }) {
         .filter(Boolean),
       startDate,
       dueDate,
+      projectId: projectId, // ⬅️ ADD THIS LINE
     };
 
     try {
@@ -88,6 +99,22 @@ export default function TaskFormModal({ onClose, onSuccess, task }) {
           {task ? "Edit Task" : "Add Task"}
         </h5>
         <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label className="form-label">Project *</label>
+            <select
+              className="form-select"
+              value={projectId}
+              onChange={(e) => setProjectId(e.target.value)}
+              required
+            >
+              <option value="">-- Select Project --</option>
+              {projects.map((p) => (
+                <option key={p._id} value={p._id}>
+                  {p.name}
+                </option>
+              ))}
+            </select>
+          </div>
           {/* Row 1: Title, Completed, Priority */}
           <div className="row mb-3">
             <div className="col-md-6">
