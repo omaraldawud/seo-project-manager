@@ -22,5 +22,5 @@ jobs:
 
       - name: Release
         env:
-          GH_TOKEN: ${{ secrets.PAT }} # 👈 your actual token secret name here
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} # 👈 your actual token secret name here
         run: npx semantic-release
