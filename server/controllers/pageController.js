@@ -1,4 +1,6 @@
 import Page from "../models/Page.js";
+import Client from "../models/Client.js";
+import { logActivity } from "../utils/logActivity.js";
 
 // GET all pages
 // GET all pages with project and client info
@@ -32,6 +34,12 @@ export const createPage = async (req, res) => {
   try {
     const page = new Page(req.body);
     await page.save();
+    // ✅ Log activity
+    await logActivity({
+      text: `New Page "${page.name}" added.`,
+      entityType: "page",
+      entityId: page._id,
+    });
     res.status(201).json(page);
   } catch (err) {
     res.status(400).json({ error: "Failed to create page" });

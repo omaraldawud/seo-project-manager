@@ -10,6 +10,12 @@ export const getTasks = async (req, res) => {
 export const createTask = async (req, res) => {
   const newTask = new Task(req.body);
   await newTask.save();
+  // ✅ Log activity
+  await logActivity({
+    text: `New Task "${task.name}" added.`,
+    entityType: "task",
+    entityId: task._id,
+  });
   res.status(201).json(newTask);
 };
 

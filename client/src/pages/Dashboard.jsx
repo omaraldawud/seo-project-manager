@@ -17,8 +17,8 @@ export default function Dashboard({ activeTab, setActiveTab }) {
       1: <Clients />,
       2: <Projects />,
       3: <Tasks />,
-      4: <Users />,
-      5: <Pages />,
+      4: <Pages />,
+      5: <Users />,
     }),
     []
   );
