@@ -22,6 +22,8 @@ import {
   faKey,
   faUserShield,
   faUserFriends,
+  faPager,
+  faCogs,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Sidebar({ activeTab, setActiveTab }) {
@@ -31,12 +33,12 @@ export default function Sidebar({ activeTab, setActiveTab }) {
     { icon: faDiagramProject, title: "Projects" },
     { icon: faListCheck, title: "Tasks" },
     { icon: faUser, title: "Users" },
-    { icon: faKey, title: "Keywords" },
+    { icon: faPager, title: "Pages" },
     { icon: faFileAlt, title: "Content Optimizer" },
     { icon: faUserShield, title: "Competitors" },
     { icon: faFileExport, title: "Exports / Reports" },
 
-    { icon: faCog, title: "Settings" }, // App configuration
+    { icon: faCogs, title: "Settings" }, // App configuration
   ];
 
   return (

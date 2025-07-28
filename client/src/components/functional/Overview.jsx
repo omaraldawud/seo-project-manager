@@ -52,13 +52,27 @@ export default function Overview() {
     fetchStats();
   }, []);
 
+  const MetricCard = ({ icon, title, value }) => (
+    <div
+      className="bg-light rounded px-3 py-2 shadow-sm"
+      style={{ minWidth: "90px" }}
+    >
+      <FontAwesomeIcon icon={icon} className="mb-1 text-info fs-4" />
+      <h4 className="m-0">{value}</h4>
+      <div className="text-muted">{title}</div>
+    </div>
+  );
+
   return (
     <div className="row g-4">
       <div className="col-md-6">
         <div className="card shadow-sm p-3">
           <div className="d-flex align-items-center mb-3">
-            <FontAwesomeIcon icon={faServer} className="me-2 text-primary" />
-            <h5 className="mb-0">System SEO Overview</h5>
+            <FontAwesomeIcon
+              icon={faProjectDiagram}
+              className="me-2 text-primary"
+            />
+            <h5 className="mb-0">Agency SEO Overview</h5>
           </div>
           <div className="d-flex justify-content-around text-center">
             <MetricCard icon={faUser} title="Clients" value={stats.clients} />
@@ -72,6 +86,7 @@ export default function Overview() {
         </div>
       </div>
 
+      {/* Recent Acrivities */}
       <div className="col-md-6">
         <div className="card shadow-sm p-3">
           <div className="d-flex align-items-center mb-3">
@@ -91,17 +106,27 @@ export default function Overview() {
           </ul>
         </div>
       </div>
+
+      <div className="col-md-6">
+        <div className="card shadow-sm p-3">
+          <div className="d-flex align-items-center mb-3">
+            <FontAwesomeIcon
+              icon={faProjectDiagram}
+              className="me-2 text-primary"
+            />
+            <h5 className="mb-0">Place Holder</h5>
+          </div>
+          <div className="d-flex justify-content-around text-center">
+            <MetricCard icon={faUser} title="Clients" value={stats.clients} />
+            <MetricCard
+              icon={faProjectDiagram}
+              title="Projects"
+              value={stats.projects}
+            />
+            <MetricCard icon={faTasks} title="Tasks" value={stats.tasks} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
-
-const MetricCard = ({ icon, title, value }) => (
-  <div
-    className="bg-light rounded px-3 py-2 shadow-sm"
-    style={{ minWidth: "90px" }}
-  >
-    <FontAwesomeIcon icon={icon} className="mb-1 text-info fs-4" />
-    <h4 className="m-0">{value}</h4>
-    <div className="text-muted">{title}</div>
-  </div>
-);

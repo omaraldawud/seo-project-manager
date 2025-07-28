@@ -12,7 +12,7 @@ export default function App() {
     <div className="d-flex vh-100">
       {/* First Sidebar (Vertical Text) */}
       <div
-        className="d-flex flex-column bg-success min-vh-100 p-4"
+        className="d-flex flex-column min-vh-100 p-4"
         style={{ width: "40px" }}
       >
         <GreenSideBar />

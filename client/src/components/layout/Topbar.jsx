@@ -38,8 +38,15 @@ export default function Topbar() {
               borderRadius: "3px",
             }}
           ></span>
-          SEO DASHBOARD
+          SEO Project Manager
         </h1>
+        <div className="terminal-prompt">
+          <span className="prompt-user">user@devpc</span>
+          <span className="prompt-path">~/projects/dashboard</span>
+          <span className="prompt-symbol">$</span>
+          <span className="typing-animation">npm run start</span>
+        </div>
+
         <div className="ms-auto">
           <span
             className="badge fs-6 px-4 py-2"

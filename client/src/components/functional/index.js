@@ -6,3 +6,4 @@ export { default as Exports } from "./Exports";
 export { default as Projects } from "./Projects";
 export { default as Users } from "./Users";
 export { default as Clients } from "./Clients";
+export { default as Pages } from "./Pages";
